@@ -4,11 +4,15 @@
 // Uses template-aws.txt and template-minio.txt to generate .aws/credentials and .mc/config.json files with retreived keys. Profile name set as bucket name for AWS case.
 // For Docker container the bucket name is passed as an environment variable (envArgs) instead of via command line.
 //
-// Usage:
+// Usage (standalone):
 // go mod init your/init
 // go get github.com/ceph/go-ceph/rgw/admin
 // go run get-keys.go {ceph_bucket}
 // If no bucket is specified (go run get-keys.go) all S3 bucket keys will be retreived. MinIO will need json modification. Enjoy responsibly.
+//
+// Usage (container):
+// docker build -t getKeys Dockerfile
+// docker run -e ceph_bucket=your_bucket_name getKeys
 
 package main
 
