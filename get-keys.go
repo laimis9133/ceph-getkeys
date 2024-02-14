@@ -81,10 +81,10 @@ func main() {
   tmplMinIO, err := template.New("template").Parse(string(templateContentMinIO))
   if err != nil { panic(fmt.Sprintf("Cannot parse template.", err)) }
 
-  credentials, err := os.Create("credentials")
+  credentials, err := os.Create("credentials")  // Set file location in some shared volume for Kubernetes 
   defer credentials.Close()
 
-  configjson, err := os.Create("config.json")
+  configjson, err := os.Create("config.json")  // Set file location in some shared volume for Kubernetes
   defer configjson.Close()
 
   for data := range ch {
